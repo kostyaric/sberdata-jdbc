@@ -47,7 +47,9 @@ public class DataTransfer {
         }
 
         sourceStatement.close();
+        targetConnection.setAutoCommit(false);
         targetStatement.executeBatch();
+        targetConnection.commit();
         targetStatement.close();
 
     }
